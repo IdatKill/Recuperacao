@@ -1,3 +1,15 @@
 
 ###Raiz da api
 GET http://localhost:5128
+
+###Cadastro de aluno
+POST http://localhost:5128/api/aluno/cadastrar
+Content-Type: application/json
+
+{
+    "nome": "Gabriel",
+    "sobrenome": "Lucas"
+}
+
+###Listar alunos por ID
+GET http://localhost:5128/api/aluno/listar/1
