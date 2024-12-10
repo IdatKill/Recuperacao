@@ -8,4 +8,6 @@ public class Aluno
 
     public string? Sobrenome { get; set; }
 
+    public DateTime dateTime { get; set; } = DateTime.Now;
+
 }

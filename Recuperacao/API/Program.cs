@@ -5,6 +5,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
 var app = builder.Build();
 
+//Configurar a política de CORS
+builder.Services.AddCors(options =>
+    options.AddPolicy("Acesso Total",
+        configs => configs
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod())
+);
+
 app.MapGet("/", () => "Prova final!");
 
 // Cadastrar Aluno
@@ -31,4 +40,5 @@ app.MapGet("/api/aluno/listar/{id}", ([FromRoute] int id, [FromServices] AppData
     return Results.Ok(tarefa);
 });
 
+app.UseCors("Acesso Total");
 app.Run();

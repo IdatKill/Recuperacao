@@ -7,9 +7,6 @@ POST http://localhost:5128/api/aluno/cadastrar
 Content-Type: application/json
 
 {
-    "nome": "Gabriel",
-    "sobrenome": "Lucas"
+    "nome": "Joao",
+    "sobrenome": "Peter"
 }
-
-###Listar alunos por ID
-GET http://localhost:5128/api/aluno/listar/1
