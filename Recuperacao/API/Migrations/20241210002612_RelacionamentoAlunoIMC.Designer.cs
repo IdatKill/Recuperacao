@@ -3,6 +3,7 @@ using System;
 using API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20241210002612_RelacionamentoAlunoIMC")]
+    partial class RelacionamentoAlunoIMC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -43,7 +46,7 @@ namespace API.Migrations
                     b.Property<double>("Altura")
                         .HasColumnType("REAL");
 
-                    b.Property<int?>("Alunoid")
+                    b.Property<int>("Alunoid")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Classificacao")
@@ -69,7 +72,9 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Models.Aluno", "Aluno")
                         .WithMany("IMC")
-                        .HasForeignKey("Alunoid");
+                        .HasForeignKey("Alunoid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Aluno");
                 });

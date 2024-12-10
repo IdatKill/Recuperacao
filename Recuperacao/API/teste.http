@@ -10,3 +10,16 @@ Content-Type: application/json
     "nome": "Joao",
     "sobrenome": "Peter"
 }
+
+###Listar alunos
+GET http://localhost:5128/api/aluno/listar/2
+
+###cadastrar imc
+POST http://localhost:5128/api/imc/cadastrar/2
+
+###Listar imc
+GET http://localhost:5128/api/imc/listar/2
+
+###Listar imc por aluno
+GET http://localhost:5128/api/imc/listar/2/2
+
